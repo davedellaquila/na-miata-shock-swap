@@ -1,0 +1,1076 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <link rel="icon" href="data:," />
+    <title>NA Miata Shock Swap — Shop Guide</title>
+    <meta name="description" content="Complete step-by-step guide to replacing the shocks (dampers) on a 1990–97 NA Mazda Miata / MX-5: rear and front procedures, the long-bolt method, spring-compressor bench work, factory torque specs, and the gotchas that bite first-timers." />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="NA Miata Shock Swap — Shop Guide" />
+    <meta property="og:description" content="How to replace all four shocks on a 1990–97 NA Miata: long-bolt method, bench work with a spring compressor, factory torque specs, and the eleven gotchas that bite." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --paper: #f6f1e7;
+        --paper-2: #efe7d6;
+        --card: #fffdf7;
+        --ink: #1d1a15;
+        --ink-2: #4c463c;
+        --ink-3: #7a7263;
+        --line: #d8cfba;
+        --line-strong: #b9ad93;
+        --accent: #c2410c;        /* safety orange */
+        --accent-soft: #fbe9dd;
+        --teal: #0f5e63;
+        --teal-soft: #dceceb;
+        --red: #b3261e;
+        --red-soft: #fae3e1;
+        --amber: #8a5a00;
+        --amber-soft: #f7ecd2;
+        --green: #2e6b34;
+        --green-soft: #e2efdd;
+        --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+        --sans: "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --cond: "Barlow Condensed", "Barlow", system-ui, sans-serif;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #171410;
+          --paper-2: #1e1a15;
+          --card: #221e18;
+          --ink: #f0e9da;
+          --ink-2: #c9c0ad;
+          --ink-3: #968b76;
+          --line: #3a342a;
+          --line-strong: #57503f;
+          --accent: #f0762e;
+          --accent-soft: #3a2317;
+          --teal: #5fb3b8;
+          --teal-soft: #17383a;
+          --red: #f08a84;
+          --red-soft: #3d1d1b;
+          --amber: #e0b45c;
+          --amber-soft: #37301a;
+          --green: #8fce97;
+          --green-soft: #1e3320;
+        }
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--sans);
+        font-size: 17px;
+        line-height: 1.55;
+        -webkit-font-smoothing: antialiased;
+      }
+      a { color: var(--teal); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+      .wrap { max-width: 1060px; margin: 0 auto; padding: 0 20px 80px; }
+
+      /* ---------- header ---------- */
+      header.hero {
+        border-bottom: 3px solid var(--ink);
+        padding: 34px 0 22px;
+      }
+      .hero-top {
+        display: flex; flex-wrap: wrap; gap: 10px 26px; align-items: baseline;
+        font-family: var(--mono); font-size: 13px; letter-spacing: .04em;
+        color: var(--ink-2); text-transform: uppercase;
+      }
+      .hero-top b { color: var(--accent); }
+      h1 {
+        font-family: var(--cond); font-weight: 700;
+        font-size: clamp(44px, 8.5vw, 84px);
+        line-height: .95; letter-spacing: .005em;
+        margin: 14px 0 6px; text-transform: uppercase;
+      }
+      h1 .thin { display: block; font-weight: 500; font-size: .52em; color: var(--ink-2); letter-spacing: .02em; }
+      .hero-sub { max-width: 62ch; font-size: 18px; color: var(--ink-2); margin: 10px 0 0; }
+      .hero-sub b { color: var(--ink); }
+
+      .fact-strip {
+        display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+        background: var(--line-strong); border: 1px solid var(--line-strong);
+        margin-top: 24px;
+      }
+      .fact { background: var(--card); padding: 14px 16px; }
+      .fact .k { font-family: var(--mono); font-size: 11px; letter-spacing: .09em; text-transform: uppercase; color: var(--ink-3); }
+      .fact .v { font-family: var(--cond); font-weight: 600; font-size: 24px; line-height: 1.15; margin-top: 3px; }
+      .fact .v small { font-size: 15px; color: var(--ink-2); font-weight: 500; }
+
+      /* ---------- nav ---------- */
+      nav.toc {
+        position: sticky; top: 0; z-index: 20;
+        background: var(--paper); border-bottom: 1px solid var(--line-strong);
+        margin: 0 -20px; padding: 10px 20px;
+        display: flex; flex-wrap: wrap; gap: 6px 16px;
+        font-family: var(--cond); font-weight: 600; font-size: 17px; text-transform: uppercase; letter-spacing: .03em;
+      }
+      nav.toc a { color: var(--ink-2); text-decoration: none; }
+      nav.toc a:hover { color: var(--accent); }
+
+      /* ---------- sections ---------- */
+      section { margin-top: 56px; scroll-margin-top: 64px; }
+      .sec-head { display: flex; align-items: baseline; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 8px; margin-bottom: 22px; }
+      .sec-num { font-family: var(--mono); font-weight: 600; font-size: 15px; color: var(--accent); }
+      h2 { font-family: var(--cond); font-weight: 700; font-size: clamp(30px, 5vw, 42px); text-transform: uppercase; line-height: 1; margin: 0; }
+      .sec-note { color: var(--ink-2); max-width: 68ch; }
+      h3 { font-family: var(--cond); font-weight: 600; font-size: 24px; text-transform: uppercase; letter-spacing: .02em; margin: 30px 0 10px; }
+      p { margin: 0 0 12px; }
+      ul, ol { margin: 0 0 12px; padding-left: 22px; }
+      li { margin-bottom: 6px; }
+      .src { font-size: 13.5px; color: var(--ink-3); }
+      .src a { color: var(--ink-3); }
+
+      /* golden rules */
+      .rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .rule { background: var(--card); border: 1px solid var(--line-strong); padding: 18px; }
+      .rule .n { font-family: var(--cond); font-weight: 700; font-size: 40px; color: var(--accent); line-height: 1; }
+      .rule h4 { font-family: var(--cond); font-weight: 600; font-size: 21px; text-transform: uppercase; margin: 8px 0 6px; line-height: 1.1; }
+      .rule p { font-size: 15.5px; color: var(--ink-2); margin: 0; }
+      .rule p b { color: var(--ink); }
+      blockquote.tech {
+        margin: 18px 0 0; padding: 16px 20px; background: var(--teal-soft);
+        border: 1px solid var(--teal); font-size: 17px;
+      }
+      blockquote.tech b { font-family: var(--cond); text-transform: uppercase; letter-spacing: .04em; }
+      blockquote.tech .who { display: block; margin-top: 6px; font-size: 14px; color: var(--ink-2); }
+
+      /* timeline */
+      .timeline { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--line-strong); background: var(--card); }
+      .tl { padding: 16px; border-right: 1px dashed var(--line-strong); }
+      .tl:last-child { border-right: none; }
+      .tl .when { font-family: var(--mono); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+      .tl h4 { font-family: var(--cond); font-size: 21px; font-weight: 600; text-transform: uppercase; margin: 5px 0 5px; line-height: 1.1; }
+      .tl p { font-size: 15px; color: var(--ink-2); margin: 0; }
+      .time-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 15.5px; }
+      .time-table th, .time-table td { border: 1px solid var(--line); padding: 9px 12px; text-align: left; vertical-align: top; }
+      .time-table th { font-family: var(--cond); text-transform: uppercase; letter-spacing: .04em; font-size: 16px; background: var(--paper-2); }
+      .time-table td.t { font-family: var(--mono); font-weight: 600; white-space: nowrap; }
+
+      /* steps */
+      .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
+      .steps > li {
+        display: grid; grid-template-columns: 58px 1fr; gap: 16px;
+        padding: 16px 0; border-bottom: 1px solid var(--line);
+      }
+      .steps > li:last-child { border-bottom: none; }
+      .steps .num {
+        font-family: var(--cond); font-weight: 700; font-size: 34px; line-height: 1;
+        color: var(--card); background: var(--ink); width: 48px; height: 48px;
+        display: flex; align-items: center; justify-content: center; border-radius: 50%;
+        margin-top: 2px;
+      }
+      .steps.accent .num { background: var(--accent); }
+      .steps.teal .num { background: var(--teal); }
+      .steps .body h4 { font-family: var(--cond); font-weight: 600; font-size: 22px; text-transform: uppercase; margin: 2px 0 5px; line-height: 1.12; }
+      .steps .body p { color: var(--ink-2); margin: 0 0 8px; max-width: 68ch; }
+      .steps .body p b, .steps .body li b { color: var(--ink); }
+      .steps .body ul { margin-bottom: 4px; }
+      .tag {
+        display: inline-block; font-family: var(--mono); font-size: 11.5px; font-weight: 600;
+        letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px;
+        vertical-align: 2px; margin-left: 8px;
+      }
+      .tag.two { background: var(--teal-soft); color: var(--teal); border: 1px solid var(--teal); }
+      .tag.warn { background: var(--red-soft); color: var(--red); border: 1px solid var(--red); }
+      .tag.spec { background: var(--paper-2); color: var(--ink-2); border: 1px solid var(--line-strong); }
+
+      .callout { border: 1px solid var(--line-strong); background: var(--card); padding: 16px 18px; margin: 16px 0; }
+      .callout.danger { border: 2px solid var(--red); background: var(--red-soft); }
+      .callout.amber { border: 1px solid var(--amber); background: var(--amber-soft); }
+      .callout.green { border: 1px solid var(--green); background: var(--green-soft); }
+      .callout h4 { font-family: var(--cond); font-weight: 700; font-size: 21px; text-transform: uppercase; margin: 0 0 6px; }
+      .callout p { margin: 0 0 8px; color: var(--ink-2); }
+      .callout p:last-child { margin-bottom: 0; }
+      .callout p b { color: var(--ink); }
+
+      /* tools */
+      .cols-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+      .tool-list { list-style: none; padding: 0; margin: 0; }
+      .tool-list li { padding: 9px 0 9px 26px; border-bottom: 1px solid var(--line); position: relative; font-size: 16px; }
+      .tool-list li::before {
+        content: ""; position: absolute; left: 2px; top: 15px; width: 11px; height: 11px;
+        border: 2px solid var(--ink-3); border-radius: 2px;
+      }
+      .tool-list li b { font-weight: 600; }
+      .tool-list li span { color: var(--ink-2); font-size: 15px; }
+      .tool-list li.star::before { border-color: var(--accent); background: var(--accent); }
+
+      /* methods */
+      .methods { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+      .method { border: 1px solid var(--line-strong); background: var(--card); padding: 18px; }
+      .method.pick { border: 2px solid var(--teal); }
+      .method .mh { display: flex; justify-content: space-between; align-items: baseline; }
+      .method .letter { font-family: var(--cond); font-weight: 700; font-size: 34px; line-height: 1; color: var(--ink-3); }
+      .method.pick .letter { color: var(--teal); }
+      .method h4 { font-family: var(--cond); font-weight: 600; font-size: 22px; text-transform: uppercase; margin: 6px 0 6px; line-height: 1.1; }
+      .method p { font-size: 15px; color: var(--ink-2); margin: 0 0 8px; }
+      .method p:last-child { margin-bottom: 0; }
+      .verdict { font-family: var(--mono); font-size: 11.5px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; padding: 3px 9px; border-radius: 999px; }
+      .verdict.use { background: var(--green-soft); color: var(--green); border: 1px solid var(--green); }
+      .verdict.skip { background: var(--paper-2); color: var(--ink-3); border: 1px solid var(--line-strong); }
+
+      /* stack diagram */
+      .diagram { background: var(--card); border: 1px solid var(--line-strong); padding: 22px; display: grid; grid-template-columns: 300px 1fr; gap: 26px; align-items: start; }
+      .diagram svg { width: 100%; height: auto; display: block; }
+      .stack-notes ol { padding-left: 20px; }
+      .stack-notes li { margin-bottom: 8px; font-size: 15.5px; }
+      .stack-notes li b { font-weight: 600; }
+
+      /* torque table */
+      .torque-scroll { overflow-x: auto; border: 1px solid var(--line-strong); }
+      table.torque { width: 100%; border-collapse: collapse; background: var(--card); min-width: 640px; }
+      table.torque th, table.torque td { padding: 11px 14px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+      table.torque thead th { font-family: var(--cond); text-transform: uppercase; letter-spacing: .04em; font-size: 16px; background: var(--ink); color: var(--paper); border-bottom: none; }
+      table.torque .fast { font-weight: 600; }
+      table.torque .fast small { display: block; font-weight: 400; color: var(--ink-3); font-size: 13.5px; }
+      table.torque .spec { font-family: var(--mono); font-weight: 600; font-size: 19px; white-space: nowrap; }
+      table.torque .spec small { display: block; font-size: 12.5px; color: var(--ink-3); font-weight: 500; }
+      table.torque td.note { font-size: 14.5px; color: var(--ink-2); min-width: 210px; }
+      table.torque tr.dont td { background: var(--red-soft); }
+      .flag { font-family: var(--mono); font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; color: var(--red); border: 1px solid var(--red); padding: 1px 6px; border-radius: 3px; white-space: nowrap; }
+      .loaded-banner {
+        display: flex; gap: 16px; align-items: center; background: var(--accent-soft);
+        border: 2px solid var(--accent); padding: 16px 20px; margin-bottom: 18px;
+      }
+      .loaded-banner .big { font-family: var(--cond); font-weight: 700; font-size: clamp(24px, 4vw, 34px); text-transform: uppercase; line-height: 1.05; }
+      .loaded-banner p { margin: 0; color: var(--ink-2); font-size: 15.5px; }
+
+      /* gotchas */
+      .gotchas { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .gotcha { background: var(--card); border: 1px solid var(--line-strong); padding: 16px 18px; }
+      .gotcha h4 { font-family: var(--cond); font-weight: 600; font-size: 20px; text-transform: uppercase; margin: 0 0 5px; line-height: 1.15; }
+      .gotcha h4 .gnum { color: var(--red); margin-right: 6px; }
+      .gotcha p { font-size: 15px; color: var(--ink-2); margin: 0; }
+      .gotcha p b { color: var(--ink); }
+
+      /* videos */
+      .videos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+      .video { background: var(--card); border: 1px solid var(--line-strong); padding: 18px; text-decoration: none; color: var(--ink); display: block; }
+      .video:hover { border-color: var(--accent); }
+      .video .ch { font-family: var(--mono); font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--accent); }
+      .video h4 { font-family: var(--cond); font-weight: 600; font-size: 22px; margin: 5px 0 6px; line-height: 1.15; }
+      .video p { font-size: 15px; color: var(--ink-2); margin: 0; }
+      .video .meta { font-family: var(--mono); font-size: 12.5px; color: var(--ink-3); margin-top: 8px; }
+
+      footer { margin-top: 64px; border-top: 2px solid var(--ink); padding-top: 18px; font-size: 14.5px; color: var(--ink-2); }
+      footer h4 { font-family: var(--cond); text-transform: uppercase; font-size: 18px; color: var(--ink); margin: 0 0 8px; }
+      footer ol { padding-left: 20px; }
+      footer li { margin-bottom: 4px; }
+
+      @media (max-width: 860px) {
+        .fact-strip { grid-template-columns: 1fr 1fr; }
+        .rules, .methods { grid-template-columns: 1fr; }
+        .timeline { grid-template-columns: 1fr 1fr; }
+        .tl:nth-child(2) { border-right: none; }
+        .tl { border-bottom: 1px dashed var(--line-strong); }
+        .cols-2, .gotchas, .videos { grid-template-columns: 1fr; }
+        .diagram { grid-template-columns: 1fr; }
+        .diagram svg { max-width: 340px; margin: 0 auto; }
+        .steps > li { grid-template-columns: 44px 1fr; gap: 12px; }
+        .steps .num { width: 38px; height: 38px; font-size: 26px; }
+        .loaded-banner { flex-direction: column; align-items: flex-start; }
+      }
+      @media (max-width: 640px) {
+        /* torque table becomes stacked cards — no sideways scrolling in the shop */
+        .torque-scroll { overflow-x: visible; border: none; }
+        table.torque { min-width: 0; }
+        table.torque, table.torque tbody, table.torque tr, table.torque td { display: block; width: 100%; }
+        table.torque thead { display: none; }
+        table.torque tr { border: 1px solid var(--line-strong); margin-bottom: 10px; }
+        table.torque td { border-bottom: 1px solid var(--line); }
+        table.torque td:last-child { border-bottom: none; }
+        table.torque td.note { min-width: 0; }
+        table.torque .spec { font-size: 22px; }
+      }
+      @media print {
+        nav.toc { display: none; }
+        body { font-size: 14px; background: #fff; }
+        section { break-inside: avoid-page; margin-top: 32px; }
+        .video, .gotcha, .rule, .method { break-inside: avoid; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+
+      <header class="hero">
+        <div class="hero-top">
+          <span><b>Shop guide</b> · 1990–97 NA Miata / MX-5</span>
+          <span>All four corners</span>
+          <span>Two-person job</span>
+          <span>Spring compressor required</span>
+        </div>
+        <h1>NA Miata Shock Swap <span class="thin">1990–97 NA Miata / MX-5 · all four corners · stock-style springs &amp; shocks</span></h1>
+        <p class="hero-sub">The complete shock (damper) replacement for the first-generation Miata: <b>rear and front procedures</b>, the <b>long-bolt method</b> up front, <b>bench work with a spring compressor</b>, and <b>factory torque specs</b> for every fastener you'll touch. New shocks go in; the <b>original springs, top hats, bump stops and boots are reused after inspection</b> at teardown. Every assembly comes apart <b>on the bench</b>, and nothing is torqued to spec until the corner is <b>loaded at ride height</b>. The alignment eccentrics are never touched, so the car keeps its alignment. Torque values are the Mazda Shop Manual ranges; where sources disagree, the disagreement is flagged rather than hidden.</p>
+        <div class="fact-strip">
+          <div class="fact"><div class="k">Plan of attack</div><div class="v">Rears first <small>then fronts</small></div></div>
+          <div class="fact"><div class="k">First-timer pair</div><div class="v">~6–8 hrs <small>all four corners</small></div></div>
+          <div class="fact"><div class="k">Sockets that matter</div><div class="v">14 · 17 · 21 mm</div></div>
+          <div class="fact"><div class="k">After the swap</div><div class="v">Settle drive <small>+ alignment check</small></div></div>
+        </div>
+      </header>
+
+      <nav class="toc">
+        <a href="#rules">Golden rules</a>
+        <a href="#plan">Game plan</a>
+        <a href="#tools">Tools &amp; parts</a>
+        <a href="#prep">Prep</a>
+        <a href="#rear">Rear</a>
+        <a href="#front">Front</a>
+        <a href="#bench">Bench work</a>
+        <a href="#torque">Torque specs</a>
+        <a href="#gotchas">Gotchas</a>
+        <a href="#safety">Safety</a>
+        <a href="#variants">Year notes</a>
+        <a href="#watch">Watch &amp; read</a>
+      </nav>
+
+      <!-- ============ GOLDEN RULES ============ -->
+      <section id="rules">
+        <div class="sec-head"><span class="sec-num">01</span><h2>Three golden rules</h2></div>
+        <div class="rules">
+          <div class="rule">
+            <div class="n">1</div>
+            <h4>Compressor lives on the bench</h4>
+            <p>Getting the assembly <b>out of the car</b> and taking it <b>apart</b> (spring compressor) are two separate jobs. Do both, in that order. Never compress a spring while it's still in the car.</p>
+          </div>
+          <div class="rule">
+            <div class="n">2</div>
+            <h4>Torque loaded, never at droop</h4>
+            <p>Every bushing-pivot, lower-shock and end-link fastener stays <b>snug only</b> while the car is in the air. Final torque happens with a jack under the hub, raised until the car just starts to lift off the stand.</p>
+          </div>
+          <div class="rule">
+            <div class="n">3</div>
+            <h4>Never touch the eccentric bolts</h4>
+            <p>The camber/alignment eccentrics stay untouched in every method here — that's what preserves the alignment. Loosening them is the one move that turns a Saturday job into a mandatory alignment-shop visit.</p>
+          </div>
+        </div>
+        <blockquote class="tech">
+          <b>Senior-tech consult — Keith Tanner, Flyin' Miata:</b> “Spring compressors should only be used away from the car. They're not a band-aid to get the parts into the car. Just do it the right way.”
+          <span class="who">Grassroots Motorsports forum — on why the long-bolt method beats splitting ball joints. <a href="https://grassrootsmotorsports.com/forum/grm/i-guess-i-shouldve-listened-to-keiths-advice/47443/page1/">Read the thread</a></span>
+        </blockquote>
+      </section>
+
+      <!-- ============ GAME PLAN ============ -->
+      <section id="plan">
+        <div class="sec-head"><span class="sec-num">02</span><h2>Game plan for the day</h2></div>
+        <div class="timeline">
+          <div class="tl">
+            <div class="when">1–2 days ahead</div>
+            <h4>Soak everything</h4>
+            <p>Penetrating oil on every fastener you'll touch — lower shock bolts, end links, top-hat nuts. A day or two ahead is the single biggest time-saver in every guide.</p>
+          </div>
+          <div class="tl">
+            <div class="when">First</div>
+            <h4>Prep &amp; lift</h4>
+            <p>Lugs cracked loose on the ground, shaft nuts loosened a few turns, the end you're doing up on stands, wheels off, springs marked.</p>
+          </div>
+          <div class="tl">
+            <div class="when">The work</div>
+            <h4>Rears, then fronts</h4>
+            <p>No steering, no long bolt — the rears are the friendly end of this car and teach the whole routine (~2 hrs for both, first time). Bench-swap each assembly, torque loaded. Then the fronts by the long-bolt method.</p>
+          </div>
+          <div class="tl">
+            <div class="when">End of day</div>
+            <h4>Wrap-up</h4>
+            <p>Settle drive, fastener re-check, ride height eyeballed side-to-side, alignment check booked.</p>
+          </div>
+        </div>
+        <p style="margin-top:14px"><b>Doing just one end?</b> That's fine — the rear and front procedures below each stand alone. Budget ~2 hours for the rears, ~3½ for the fronts, first time.</p>
+        <table class="time-table">
+          <tr><th>Crew</th><th>All four corners</th><th>Basis</th></tr>
+          <tr><td>First-timer pair, no seized fasteners</td><td class="t">~6–8 hrs</td><td>Bobshome/San Diego club: two people, first Miata job, shocks + both sway bars = 7 hrs including lunch (rears ~2 h, fronts ~3½ h)</td></tr>
+          <tr><td>First-timer pair, typical 30-yr-old car</td><td class="t">Full weekend</td><td>One or two seized fasteners plus a parts/tool run is the norm — don't book the alignment for the same afternoon</td></tr>
+          <tr><td>Experienced pair, clean car</td><td class="t">~2½–4 hrs</td><td>Miata.net: repeat rear pairs 1–1½ h, fronts 1½–2 h</td></tr>
+          <tr><td>Assemblies pre-built on the bench</td><td class="t">~1 hr swap</td><td>NASA Speed News — the argument for having new top-hat hardware ready to go</td></tr>
+        </table>
+        <p class="src" style="margin-top:10px">Add a 30-minute settling drive and fastener re-check at the end of the day, and a lug/fastener re-check after 50–100 miles.</p>
+      </section>
+
+      <!-- ============ TOOLS & PARTS ============ -->
+      <section id="tools">
+        <div class="sec-head"><span class="sec-num">03</span><h2>Tools &amp; parts — stage them before you start</h2></div>
+        <div class="cols-2">
+          <div>
+            <h3 style="margin-top:0">Tools</h3>
+            <ul class="tool-list">
+              <li><b>21 mm socket + 21 mm box wrench</b> <span>— the front long bolt. The tool people forget; one forum poster lost a 2-hour round trip buying them mid-job. Do not start the front job without both.</span></li>
+              <li><b>17 mm sockets, regular + deep-well; 17 mm wrench</b> <span>— lower shock bolts, shaft nut (stock-type), hub-carrier bolts</span></li>
+              <li><b>14 mm sockets, regular + deep-well; 14 mm wrench</b> <span>— top-hat nuts (2 per corner), sway-bar end links. Deep-well earns its keep on the upper nuts</span></li>
+              <li><b>12 mm socket</b> <span>— front sway-bar bracket rear bolt; ABS sensor &amp; wire-bracket bolts (front steps)</span></li>
+              <li><b>10 mm socket</b> <span>— undertray / splash-guard bolts if disturbed</span></li>
+              <li class="star"><b>Two torque wrenches</b> <span>— ⅜″ drive covering ~5–75 ft-lb and ½″ drive covering ~25–150 ft-lb. Most of this job lives at 22–69 ft-lb; the big wrench's headroom covers the front long bolt (up to 102 ft-lb)</span></li>
+              <li><b>Coil spring compressor, pair of external hooks with safety pins</b> <span>— most auto-parts stores loan or rent these free; inspect threads and hooks before use, lubricate the threads</span></li>
+              <li><b>Floor jack (low-profile) + four jack stands + wheel chocks</b> <span>— the jack does double duty loading each corner for final torque. A second jack or scissor jack for holding a corner is a genuine luxury</span></li>
+              <li><b>Breaker bar (½″), ratchets, extensions, universal/swivel joint</b> <span>— NASA: “There isn't much room for an impact wrench up top. You need to use a swivel.” Never loosen with a torque wrench — it ruins calibration</span></li>
+              <li><b>Bench vise</b> <span>— holds the shock body for bench work; pad the jaws with wood/aluminium if the shock is being reused, never clamp the polished piston rod</span></li>
+              <li><b>½″ impact wrench — removal help only</b> <span>— for breaking seized fasteners. Never to drive the spring compressor, run down a shaft nut to torque, or final-tighten anything</span></li>
+              <li><b>Pass-through / crowfoot socket or box wrench + small wrench or hex key</b> <span>— counter-holding the shock shaft at its tip while the centre nut is turned</span></li>
+              <li><b>Pry bar, large flat-blade screwdriver, rubber mallet + hammer, needle-nose/curved pliers, magnetic pick-up tool</b> <span>— levering arms, ABS clip, and retrieving the top-hat nut you will otherwise drop into the body</span></li>
+              <li><b>Paint marker / tape, phone camera, parts trays, spare cotter pins</b> <span>— spring orientation, stack order, left/right discipline</span></li>
+              <li><b>Safety glasses, gloves, good shop light / headlamp</b></li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin-top:0">Parts &amp; consumables — buy before the car goes up</h3>
+            <ul class="tool-list">
+              <li class="star"><b>New shocks ×4 (or ×2 for one end)</b> <span>— stock-type replacements: Koni, Bilstein, KYB, Tokico and the like. NA fitment is one 1990–97 application per end. Keep the maker's instruction sheet from the box — it governs the shaft nut and any settings (see the note below)</span></li>
+              <li><b>Bump stops ×4 — inspect first, reuse if sound</b> <span>— the plan is to transfer your originals. At teardown, if they're crumbled: stop and order — OEM rear stopper NA01-28-111, or the 5X Racing Street kit ($90, for stock springs). On an NA the stop is a working suspension part, not a dust cap — the car does not go back together without sound ones</span></li>
+              <li><b>Dust boots / covers ×4 — reuse if intact</b> <span>— originals are often “very brittle and broken into many sections.” If yours have disintegrated, they join the same fallback order as the stops. Some boots integrate the bump stop — check before ordering both</span></li>
+              <li><b>Sway-bar end links, with hardware — one pair per end on standby</b> <span>— the single most likely part to be seized solid or destroyed on removal</span></li>
+              <li><b>Top hats, rubber insulators/bushings, washers, spring-seat insulators — reused</b> <span>— your originals transfer if the rubber isn't cracked, separated or mushroomed and the studs are sound; replace only what fails inspection</span></li>
+              <li><b>Centre shaft nuts ×4 + top-hat nuts ×8</b> <span>— one shaft nut per shock, two top-hat nuts per corner (×4 shocks / ×8 total; halve for one end only). Shaft nuts usually come with new shocks. The flanged 14 mm top-hat nuts are not a hardware-store item — don't lose them; have spares if corroded</span></li>
+              <li><b>White/clear plastic top-mount gaskets ×4</b> <span>— one per corner (×2 for one end only); reuse if intact; the most-forgotten part in every written account of this job</span></li>
+              <li><b>Lower shock bolts/nuts (rear)</b> <span>— inspect and replace if threads are corroded or the bolt is bent; a bolt that needed a breaker bar and hammer to leave shouldn't automatically go back</span></li>
+              <li><b>Penetrating oil, molybdenum grease, wire brush, brake-clean, cable ties</b> <span>— grease is specified for the lower shock bolt on reassembly; cable ties re-secure the ABS wire on shocks with no welded clip</span></li>
+              <li><b>Springs — reused</b> <span>— your originals transfer onto the new shocks; keep left and right strictly separated and marked. Never mix NA/NB springs, perches and hats piecemeal</span></li>
+            </ul>
+            <div class="callout amber">
+              <h4>⚠ Know your shocks before assembly</h4>
+              <p>Check the box and the maker's sheet before you build anything up. <b>Adjustable shocks</b> (Koni Sport yellows, for example): perch position and damping setting get chosen <b>before</b> the assemblies are built, from the maker's sheet — don't invent a setting on the day. <b>Fixed shocks</b> (Koni STR.T, KYB and similar): fit-and-forget, no settings to make. Either way, the maker's sheet governs the shaft nut.</p>
+            </div>
+            <div class="callout amber">
+              <h4>⚠ Anti-seize &amp; threadlocker note</h4>
+              <p>Miata.net specifies <b>grease on the lower shock bolt</b>; Robinette says “use Lock-Tite on the nuts and bolts.” Don't do both on the same fastener — and remember lubricant changes the torque you actually achieve. Follow the guide for that specific fastener.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ PREP ============ -->
+      <section id="prep">
+        <div class="sec-head"><span class="sec-num">04</span><h2>Prep — before anything comes off</h2></div>
+        <ol class="steps">
+          <li>
+            <div class="num">1</div>
+            <div class="body">
+              <h4>Soak every fastener <span class="tag spec">Start a day ahead</span></h4>
+              <p>Penetrating oil, generously, on the hardware of each end you'll do: lower shock bolts, sway-bar end-link bolts/nuts, top-hat nuts (in the trunk at the rear, in the engine bay at the front). mazda-miata.nl: <i>“Start a day or two beforehand. Lubricate all nuts and bolts of the dampers, torsion bars and carrier arms generously with penetrating oil.”</i></p>
+            </div>
+          </li>
+          <li>
+            <div class="num">2</div>
+            <div class="body">
+              <h4>Crack the lug nuts on the ground</h4>
+              <p>Park level, parking brake on, chock a wheel at the end staying down. Loosen the lug nuts on the end you're about to do <b>while the car is on the ground</b> — much harder and less safe once it's in the air.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">3</div>
+            <div class="body">
+              <h4>Loosen each shaft nut a few turns — do NOT remove it <span class="tag warn">Safety</span></h4>
+              <p>Open the trunk (rear) or engine bay (front) and back off each shock's <b>centre shaft (piston-rod) nut a few turns only</b>, while the car still holds it. Off the car, this nut is far harder to loosen — and removing it now <i>“would allow the spring to separate from the shock (which is dangerous)”</i> (Miata.net). Spring load plus the mounted hat also resist the shaft spinning — this is your first defence against that fight later.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">4</div>
+            <div class="body">
+              <h4>Lift, support, wheels off</h4>
+              <p>Raise the end you're working on — under the rear differential or the front crossmember (wood pad under the saddle) — set two stands at the reinforced sill jacking points, lower onto them, and <b>shake the car firmly</b> before any wheel comes off. <i>“MAKE SURE THE CAR IS SECURE! Having a car fall on you is no fun.”</i> Details in <a href="#safety">Safety</a>. Work one end at a time; the other end stays on the ground.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">5</div>
+            <div class="body">
+              <h4>Mark and photograph everything</h4>
+              <p>Trays out, tape and marker ready. <b>Photograph and mark each spring's orientation</b> (factory paint mark, or your own tape mark) before removal. Work one side at a time and keep left/right springs, hats and hardware together — <b>the springs at each end are a matched pair, not spares for each other</b>.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ REAR ============ -->
+      <section id="rear">
+        <div class="sec-head"><span class="sec-num">05</span><h2>Rear shocks — the easier end, start here</h2></div>
+        <p class="sec-note">“The rear shocks are easier than the fronts. Starting with these will give you a good idea of what to expect without being too difficult.” — Bobshome / San Diego Miata Club account, ~2 hours for both rears the first time. Do the rears first: they teach the whole routine — access, bench swap, loaded torque — before the fronts add the long bolt and steering hardware.</p>
+        <ol class="steps accent">
+          <li>
+            <div class="num">1</div>
+            <div class="body">
+              <h4>Trunk access — and the left-side fuel hoses <span class="tag warn">Don't skip</span></h4>
+              <p>Remove the spare tyre, then the <b>metal trunk guard</b> — it protects the fuel lines on the left and the spare well on the right — to expose the two 14 mm top-hat nuts per side. <b>Left rear only:</b> the <b>fuel filler and evaporative hoses must come off</b> to reach <i>and torque</i> the top nuts (NASA/Penske, stated twice). Work gently, no sparks or flames near the filler, and refit hoses and clamps exactly as found. The big filler hose lives behind that left trunk panel, sealed by hose clamps.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">2</div>
+            <div class="body">
+              <h4>Remove the two 14 mm top-hat nuts <span class="tag two">Two people</span></h4>
+              <p>Shaft nut stays put (loosened in prep). Use a <b>magnetic socket</b> or a finger under each nut, partner's hand or a rag underneath: <i>“Be careful not to drop the nuts into the sheet metal around the upper mounting area, or they'll wedge into place against the body in a very tight area (especially the rear one). I dropped one, and it took about 1 hour to retrieve it.”</i> — Miata.net</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">3</div>
+            <div class="body">
+              <h4>Disconnect the sway bar at the bar-to-link joint</h4>
+              <p>14 mm bolt and nut — wrench on one side, socket on the other. Disconnect at the joint between the horizontal bar and the curved end link, <b>not</b> the link-to-A-arm joint, which Miata.net found <i>“very difficult to reattach.”</i> Keep fingers clear: Bobshome's link <b>snapped back and pinched the holding wrench against the spring</b> when the pressure released. (NASA notes one side disconnected is enough droop to extract the assembly; the bar itself needn't come off.)</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">4</div>
+            <div class="body">
+              <h4>Remove the 17 mm lower shock bolt</h4>
+              <p>Note which way the bolt head points — it goes back the same way. Expect this to be the seized one: Robinette needed penetrating oil, a ½″ impact at 120 psi, a breaker bar and hammer taps on the rears. If it hangs up on the shock eye, raising or lowering the arm a fraction with a jack wiggles it free.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">5</div>
+            <div class="body">
+              <h4>Free the hub and swing it down <span class="tag two">Two people</span></h4>
+              <p>Two accepted variants: <b>(a)</b> remove the bolt joining the <b>upper A-arm to the wheel hub</b> and let the hub swing down (torque in the table, rear only), or <b>(b)</b> partner steps on the hub to lower it while you pull the assembly out — “two people make this easier.” Either way: <b>never let the hub hang by, or lever against, the brake hose</b>, and support the hub with wood or a jack once the shock is out.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">6</div>
+            <div class="body">
+              <h4>Save the white plastic gasket <span class="tag warn">Most-forgotten part</span></h4>
+              <p>Recover the <b>thin white/clear plastic top-mount gasket</b> from the top of the mounting plate. Every guide repeats this because everyone forgets it. Forum tip: <b>tape it to the fender</b> so it can't be left behind. NASA figures it's there for NVH — reuse it.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">7</div>
+            <div class="body">
+              <h4>To the bench</h4>
+              <p>Disassemble and rebuild the unit on the bench with the spring compressor — full sequence in <a href="#bench">Bench work</a>. Then reinstall per the next step.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">8</div>
+            <div class="body">
+              <h4>Reinstall — snug first, torque loaded</h4>
+              <p>Gasket in place, assembly offered up, top-hat studs through the chassis holes, two 14 mm nuts <b>finger-tight only</b> — the wiggle room lets you land the lower bolt. Partner lowers the hub (or a jack under the arm) while you guide the lower eye over the control-arm hump and insert the <b>lower bolt greased with molybdenum grease</b>, original orientation. Refit the upper-arm-to-hub bolt and end-link — snug, not final. <b>Then load the corner:</b> jack under the hub/lower arm, as close to the hub as possible, raised until the car <i>slightly lifts off the jack stand</i>. Now torque, in order: <b>lower shock bolt → top-hat nuts → centre shaft nut</b> (<a href="#torque">values below</a>). Final end-link torque happens <b>with the car back on the ground</b>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">9</div>
+            <div class="body">
+              <h4>Close up, repeat on the other side</h4>
+              <p>Refit the trunk guard, fuel filler/evap hoses (left side), spare and wheel. “It will go much faster since you know what you're doing.”</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ FRONT ============ -->
+      <section id="front">
+        <div class="sec-head"><span class="sec-num">06</span><h2>Front shocks — the long-bolt method</h2></div>
+        <p class="sec-note">Three ways exist to get a front assembly out. Only one is the right default for a stock car in a home garage:</p>
+        <div class="methods">
+          <div class="method pick">
+            <div class="mh"><span class="letter">A</span><span class="verdict use">Use this one</span></div>
+            <h4>Long bolt</h4>
+            <p>Slide out the 21 mm upper-control-arm through-bolt; the assembly swings out through the upper arm. <b>Preserves alignment</b>, breaks no ball joints, and is the only method that reliably fits a taller (e.g. NB) assembly back in.</p>
+            <p><b>Cost:</b> you need 21 mm socket + wrench, and a seized long bolt can eat an hour.</p>
+          </div>
+          <div class="method">
+            <div class="mh"><span class="letter">B</span><span class="verdict skip">Superseded</span></div>
+            <h4>Compress on the car</h4>
+            <p>Miata.net's original method: fit the compressor with the assembly still in the car. Mostly Miata tried it and found their compressor <i>“will not fit while the front shocks are still on the car”</i> — and Keith Tanner's rule says compressors belong on the bench anyway.</p>
+          </div>
+          <div class="method">
+            <div class="mh"><span class="letter">C</span><span class="verdict skip">Last resort</span></div>
+            <h4>Hub-carrier split</h4>
+            <p>Unbolt the hub carrier from the lower A-arm (Bobshome's method). Works, but disturbs more fasteners, risks ball-joint boots and the brake hose, and those bolts are <i>“more prone to corrosion and… a hassle to realign”</i> (Tanner). Only if the long bolt won't move. Have spare cotter pins.</p>
+          </div>
+        </div>
+
+        <h3>Common first steps — all methods</h3>
+        <ol class="steps teal">
+          <li>
+            <div class="num">1</div>
+            <div class="body">
+              <h4>Top access in the engine bay</h4>
+              <p>Remove the plastic dust covers from the upper mounting plates; you may need to unbolt and move the diagnostic connector and wiring a few inches. On some cars an aftermarket intake blocks the driver's-side top nuts and has to come off. (European-guide note: a large washer tank can block access on some MX-5s — the smaller US Miata tank is not in the way. Check your car, don't assume.) Shaft nut is already loosened from prep; loosen the <b>two 14 mm top-hat nuts</b> but leave one started until you're ready to drop the assembly — it keeps your hands free.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">2</div>
+            <div class="body">
+              <h4>Disconnect BOTH front end links</h4>
+              <p>14 mm, both sides. Miata.net: this <i>“will allow the lower A-arm to drop sufficiently.”</i> NASA says the same — detach the front links so both lower arms can droop.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">3</div>
+            <div class="body">
+              <h4>ABS cars: free the wire and sensor <span class="tag spec">ABS only</span></h4>
+              <p>Remove the bolt holding the ABS wire bracket to the shock / free the wire from its welded clip with a large flat-blade screwdriver. Robinette's fuller version: 12 mm ABS sensor bolt, twist the sensor out by hand, two 12 mm wire-bracket bolts on the upper A-arm, and the brake-line spring clip off (tap from below with hammer + screwdriver, or pliers). <b>Do not strain the brake hose or ABS wire at any point from here on.</b></p>
+            </div>
+          </li>
+          <li>
+            <div class="num">4</div>
+            <div class="body">
+              <h4>Remove the 17 mm lower shock bolt</h4>
+              <p>Record the orientation — reassembly is specific: <b>insert the bolt from the rear</b>, nut on from the front. NASA: <i>“Trying to put the bolt in from the front won't work. The outer tie rod is in the way.”</i> mazda-miata.nl agrees: <i>“the bolt head must face the rear of the car.”</i> Watch for the lower-eye spacer collars/O-rings slipping off as it comes out.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3>Method A — long bolt, step by step</h3>
+        <ol class="steps">
+          <li>
+            <div class="num">5</div>
+            <div class="body">
+              <h4>Make room: loosen the sway-bar bracket bolt</h4>
+              <p>Loosen the <b>rearmost bolt of the front sway-bar frame bracket</b> (12 mm, on an extension) until its back is flush with the backing nut. This gives the long bolt somewhere to slide to. (It gets retightened to 13–20 ft-lb at the end.)</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">6</div>
+            <div class="body">
+              <h4>Slide the long bolt back <span class="tag spec">21 mm + 21 mm</span></h4>
+              <p><b>21 mm box wrench on the nut, 21 mm socket on the bolt head.</b> <i>“Slide the bolt back through the big washer towards the sway bar frame bracket. Rock the A-arm up and down if the bolt is stuck. Once the bolt is all the way out of the A-arm, just leave it where it is.”</i> NASA's variant is identical: you don't have to fully remove it, but sliding it is essential. It's <b>very tight</b> — breaker bar or pipe extension, hammer taps, <b>never a torque wrench to loosen</b> — and mazda-miata.nl's warning stands: use force if you must, but <i>“avoid pushing the car off the stands!”</i></p>
+            </div>
+          </li>
+          <li>
+            <div class="num">7</div>
+            <div class="body">
+              <h4>Power-steering cars: mind the pipework</h4>
+              <p>On PS cars the pipework passes the driver's-side bolt: <i>“It is tight but the bolt should just be able to pass.”</i> Slide it, protect the pipes, never lever against them. (R-Package and manual-steering cars have clear space — one small mercy.)</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">8</div>
+            <div class="body">
+              <h4>Swing the assembly out <span class="tag two">Two people</span></h4>
+              <p>Partner pries down / stands carefully on the hub or lower arm — <b>brake hose not in tension</b> — while you swing the top of the shock/spring unit <b>out, clear of the shock tower, through the opening in the upper control arm</b>, and lift the whole still-assembled unit out. Tape the fender lip if it's close (Bobshome scraped one). Support the freed upper arm and hub — don't let them hang.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">9</div>
+            <div class="body">
+              <h4>Bench it, then reinstall in reverse</h4>
+              <p>Disassemble/rebuild on the bench (<a href="#bench">next section</a>). Reinstall: drop the assembly in through the upper-arm opening, top-hat nuts started loose, lower bolt in <b>from the rear</b>, long bolt slid back through arm and subframe, end links reconnected — <b>everything snug only</b>. Then jack under the lower arm near the hub until the car just starts to come off the stand and torque it all, long bolt and shaft nut included, at that loaded position. Miata.net's Hollis note, verbatim in substance: <i>“Do not tighten mounting bolts for sway bar end links, shock lower mount or upper control arm while the car is in full droop.”</i></p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- ============ BENCH ============ -->
+      <section id="bench">
+        <div class="sec-head"><span class="sec-num">07</span><h2>Bench work — the spring compressor routine</h2></div>
+        <div class="diagram">
+          <div>
+            <svg viewBox="0 0 300 560" role="img" aria-label="Diagram of the shock and spring assembly stack, top to bottom: body, white plastic gasket, top hat with two studs, rubber insulator, bump stop and dust boot, coil spring, shock body with lower spring perch">
+              <defs>
+                <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker>
+              </defs>
+              <g fill="none" stroke="currentColor" stroke-width="2">
+                <!-- body line -->
+                <line x1="30" y1="26" x2="270" y2="26" stroke-width="5"/>
+                <!-- gasket -->
+                <rect x="95" y="34" width="110" height="8" fill="currentColor" opacity=".25"/>
+                <!-- top hat -->
+                <path d="M85 50 L215 50 L200 74 L100 74 Z"/>
+                <circle cx="103" cy="44" r="4"/><circle cx="197" cy="44" r="4"/>
+                <!-- shaft -->
+                <line x1="150" y1="74" x2="150" y2="470" stroke-width="4"/>
+                <!-- shaft nut -->
+                <rect x="138" y="56" width="24" height="12"/>
+                <!-- insulator -->
+                <path d="M100 74 L200 74 L192 92 L108 92 Z" fill="currentColor" opacity=".18"/>
+                <!-- bump stop -->
+                <path d="M132 96 L168 96 L162 130 L138 130 Z"/>
+                <!-- boot -->
+                <path d="M118 96 L126 190 M182 96 L174 190" stroke-dasharray="5 5"/>
+                <!-- spring -->
+                <path d="M105 110 q45 14 90 0 q-45 14 -90 0 q45 14 90 0 q-45 14 -90 0 q45 14 90 0 q-45 14 -90 0 q45 14 90 0 q-45 14 -90 0 q45 14 90 0 q-45 14 -90 0 q45 14 90 0" stroke-width="5"/>
+                <!-- lower perch -->
+                <path d="M92 300 L208 300 L196 322 L104 322 Z"/>
+                <!-- shock body -->
+                <rect x="118" y="322" width="64" height="150"/>
+                <!-- lower eye -->
+                <circle cx="150" cy="492" r="16"/>
+                <circle cx="150" cy="492" r="6"/>
+              </g>
+            </svg>
+          </div>
+          <div class="stack-notes">
+            <h3 style="margin-top:0">The stack, top to bottom</h3>
+            <ol>
+              <li><b>Chassis / shock tower</b> — the hat bolts up against it.</li>
+              <li><b>White/clear plastic gasket</b> — sits above the hat, against the body. The part everyone forgets.</li>
+              <li><b>Centre shaft nut + retaining hardware</b> — the nut that holds the whole stack together. Loosened in the car, removed only after compression.</li>
+              <li><b>Top hat / upper mounting plate</b> — two studs on a stock NA hat, with its rubber insulator, bushings and washers <b>in their original order</b>. Hats are usually reused; they're not included with a new shock.</li>
+              <li><b>Bump stop + dust boot</b> — <b>the inspection gate:</b> your originals transfer only if they're intact. Crumbled stops or disintegrated boots stop the build — the fallback order (OEM NA01-28-111 / 5X Racing Street kit) goes in and nothing gets forced together.</li>
+              <li><b>Spring</b> — lower end seats in the <b>indentation/step of the lower perch</b>; marked orientation restored. Rear springs: <b>small end on the shock, large end on the cap</b>.</li>
+              <li><b>Shock</b> — lower spring perch at the bottom, mounting eye below it.</li>
+            </ol>
+            <p><b>Photograph your stack before you pull it apart.</b> Small washers and spacers are the parts everyone loses, and the order is the reassembly instructions.</p>
+          </div>
+        </div>
+
+        <ol class="steps" style="margin-top:10px">
+          <li>
+            <div class="num">1</div>
+            <div class="body">
+              <h4>Clamp the old shock body in the vise</h4>
+              <p>Body only — never the polished piston rod. If the shock is scrap, no need to protect it; if it's being reused, pad the jaws with wood or aluminium.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">2</div>
+            <div class="body">
+              <h4>Fit the compressor hooks</h4>
+              <p>Two hooks <b>directly opposite each other</b>, seated fully on coils one coil inboard from the top and bottom coils, safety pins engaged. Threads lubricated. Full safety drill in <a href="#safety">Safety</a>.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">3</div>
+            <div class="body">
+              <h4>Compress — alternately, hand tools only <span class="tag warn">No impact gun</span></h4>
+              <p>A half-turn at a time per side, keeping the spring straight and the assembly's top and bottom <b>pointed away from both of you</b>. Compress <b>only until the top mounting plate is loose and the spring can rotate independently</b> — no further. Over-compression bows the spring and walks the hooks.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">4</div>
+            <div class="body">
+              <h4>Now remove the shaft nut</h4>
+              <p>Already loosened in the car. If it spins the shaft, counter-hold per <a href="#gotchas">Gotcha 4</a>. Fingers clear of the cap and spring; if the nut still fights on its last threads, compress a little more — fully unloaded, <i>“the nut will turn by hand — but use a wrench just to be safe”</i> (Robinette).</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">5</div>
+            <div class="body">
+              <h4>Lift the stack off, in order</h4>
+              <p>Top hat → upper spring seat/insulator → bump stop/boot (inspect both now — the gate in the stack notes above) → the still-compressed spring. Keep the compressor on the spring if the same spring goes straight onto the new shock.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">6</div>
+            <div class="body">
+              <h4>Build the new unit</h4>
+              <p>Prime a new gas shock per the maker's sheet in the box (typically cycle the rod slowly a few times, upright). Slide on the lower perch insulator, the <b>inspected-and-passed (or new) bump stop and dust boot</b>, then the compressed spring — <b>lower end seated in the perch indentation</b>, marked orientation restored.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">7</div>
+            <div class="body">
+              <h4>Index the top hat</h4>
+              <p>Upper seat, hat rubber/bushings and washers in the photographed order, then the hat <b>rotated so both studs drop through the body holes</b> with the marked side facing the centre of the car. Robinette: line the studs up with the tower holes — <i>“make the holes line up.”</i> If the hat won't sit flat, the spring end isn't in its perch step: stop and re-index. <b>Do not pull it down with the nut</b>, and don't force it 180° out.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">8</div>
+            <div class="body">
+              <h4>Start the new shaft nut, counter-held</h4>
+              <p>Use the new nut supplied with the shock where supplied. Snug it while counter-holding the shaft. Final torque comes later, loaded, in the car — unless the shock maker specifies a bench torque, in which case use the shaft-nut value from the table, still counter-held, never by spinning the rod.</p>
+            </div>
+          </li>
+          <li>
+            <div class="num">9</div>
+            <div class="body">
+              <h4>Release the compressor slowly</h4>
+              <p>Evenly, alternating sides, checking as tension returns that both spring ends stay seated and the boot/bump stop aren't trapped or twisted. Then a rotate-and-tug check of the finished assembly. Adjustable shocks: set the adjuster accessibly — Bobshome pointed rear adjuster knobs to the rear, fronts to the front.</p>
+            </div>
+          </li>
+        </ol>
+
+        <div class="callout green">
+          <h4>Finish line — when the last corner is done</h4>
+          <p>Wheels on, lugs snug in a star pattern, car lowered, <b>lugs torqued on the ground</b> (65–87 ft-lb). Bounce each corner, roll the car or take a short gentle drive around the block to settle the suspension, check ride height side-to-side, and confirm no fastener was left merely snug. <b>Book a four-wheel alignment check</b> once the car has settled — within a few hundred miles. Re-check lug torque and the accessible shock fasteners after ~50–100 miles.</p>
+        </div>
+      </section>
+
+      <!-- ============ TORQUE ============ -->
+      <section id="torque">
+        <div class="sec-head"><span class="sec-num">08</span><h2>Torque specs — every fastener touched</h2></div>
+        <div class="loaded-banner">
+          <div class="big">Torque it<br/>loaded</div>
+          <p>Every value below is applied with that corner <b>jacked up under the hub until the car just starts to come off the stand</b> — except lug nuts (on the ground) and end links (final torque on the ground). Torquing a bonded-rubber bushing pivot at full droop makes droop the bushing's neutral angle: it raises the car, adds unwanted spring rate, squeaks, and tears early.</p>
+        </div>
+        <p class="sec-note">Factory column = Mazda Shop Manual ranges as published by Miata.net Garage, corroborated in Nm by mazda-miata.nl and in ft-lb by the Buckeye Miata Club sheet. <b>Use the factory range.</b> Two sources — NASA Speed News/Penske and Rob Robinette — disagree on specific values; those disagreements are flagged, not silently resolved.</p>
+        <div class="torque-scroll">
+          <table class="torque">
+            <thead><tr><th>Fastener</th><th>Factory spec</th><th>Notes &amp; disagreements</th></tr></thead>
+            <tbody>
+              <tr>
+                <td class="fast">Top-hat nuts — front <small>2 per corner · 14 mm</small></td>
+                <td class="spec">22–27 ft-lb<small>29–36 Nm</small></td>
+                <td class="note">NASA's single value of 25 sits inside the range. No material disagreement.</td>
+              </tr>
+              <tr>
+                <td class="fast">Top-hat nuts — rear <small>2 per corner · 14 mm · via trunk</small></td>
+                <td class="spec">22–27 ft-lb<small>29–36 Nm</small></td>
+                <td class="note">Same factory value both ends. NASA rear: 25.</td>
+              </tr>
+              <tr>
+                <td class="fast">Centre shaft / piston-rod nut <small>front &amp; rear · 17 mm stock-type; size varies by brand</small></td>
+                <td class="spec">22–27 ft-lb<small>29–36 Nm</small></td>
+                <td class="note"><span class="flag">⚠ Disputed</span> Buckeye lists “upper shock nuts 23–34” under a similar name; Robinette describes a two-nut cap (12–17 / 24–33) that doesn't match a stock NA hat. <b>Use 22–27 — do not chase 34 ft-lb</b>; overtightening can damage the top-mount rubber and shaft threads. If your shock maker prints its own shaft-nut torque, that sheet governs this nut. Always counter-held.</td>
+              </tr>
+              <tr>
+                <td class="fast">Lower shock bolt — front <small>17 mm · bolt in from the rear</small></td>
+                <td class="spec">54–69 ft-lb<small>73–93 Nm</small></td>
+                <td class="note"><span class="flag">⚠ Disputed</span> NASA lists <b>86 ft-lb</b> — above the factory range top, despite claiming FSM sourcing (≈ a Nm conversion error, or a Spec-Miata/Penske hardware value). <b>Use 54–69</b> for a stock NA bolt.</td>
+              </tr>
+              <tr>
+                <td class="fast">Lower shock bolt — rear <small>17 mm · grease on reassembly</small></td>
+                <td class="spec">54–69 ft-lb<small>73–93 Nm</small></td>
+                <td class="note"><span class="flag">⚠ Minor</span> NASA rear: 70 (effectively the range top). Robinette rear: 69–81 — higher throughout; treat as non-NA/superseded. <b>Use 54–69.</b></td>
+              </tr>
+              <tr>
+                <td class="fast">Front long bolt — upper control arm <small>21 mm socket + 21 mm wrench</small></td>
+                <td class="spec">87–102 ft-lb<small>118–138 Nm</small></td>
+                <td class="note">From mazda-miata.nl (not in Miata.net's list). NASA: 100 — inside the range, near the top. Two sources agree. Torque loaded.</td>
+              </tr>
+              <tr>
+                <td class="fast">Sway-bar end-link bolts/nuts <small>front &amp; rear · 14 mm</small></td>
+                <td class="spec">27–40 ft-lb<small>36–54 Nm</small></td>
+                <td class="note">Robinette's rear anti-roll figure (40–56) runs higher at the top end — flagged, use factory. <b>Final-torque loaded / on the ground</b>, or the bar ends up preloaded to one side.</td>
+              </tr>
+              <tr>
+                <td class="fast">Sway-bar frame bracket bolts <small>front &amp; rear</small></td>
+                <td class="spec">13–20 ft-lb<small>18–26 Nm</small></td>
+                <td class="note">Bobshome + Buckeye agree. The long-bolt method only <i>loosens</i> the front bracket's rear bolt — retighten it to this value.</td>
+              </tr>
+              <tr>
+                <td class="fast">Rear upper A-arm to wheel-hub bolt <small>rear removal method only</small></td>
+                <td class="spec">34–49 ft-lb<small>46–67 Nm</small></td>
+                <td class="note"><span class="flag">Name collision</span> Miata.net lists this for the rear only. Bobshome's “front lower A-arm hub carrier bolts 54–69” is a <b>different joint</b> (front, Method C). Don't swap the two values.</td>
+              </tr>
+              <tr>
+                <td class="fast">Front hub-carrier bolts, vertical + horizontal <small>17 mm · Method C only</small></td>
+                <td class="spec">54–69 ft-lb</td>
+                <td class="note">Bobshome; Buckeye corroborates the family. Robinette's “A-arm nuts 44–54” runs lower — flagged; use 54–69 if you end up in Method C.</td>
+              </tr>
+              <tr>
+                <td class="fast">ABS sensor + wire-bracket bolts <small>front · 12 mm · ABS cars only</small></td>
+                <td class="spec">12–16 ft-lb</td>
+                <td class="note"><span class="flag">Single source</span> Robinette only. Plausible for a small sensor bolt — snug with a small wrench; don't apply a suspension torque to it.</td>
+              </tr>
+              <tr>
+                <td class="fast">Wheel lug nuts <small>star pattern, on the ground</small></td>
+                <td class="spec">65–87 ft-lb<small>88–118 Nm</small></td>
+                <td class="note">Buckeye: 66–86 — same range, rounding only.</td>
+              </tr>
+              <tr class="dont">
+                <td class="fast">Alignment eccentric / camber bolts <small>DO NOT TOUCH in this job</small></td>
+                <td class="spec">—</td>
+                <td class="note">No method here requires loosening them; loosening them <b>does</b> change alignment. Reference only, if a shop disturbs them (Buckeye): front 69–83 ft-lb, rear 54–70 ft-lb.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout amber">
+          <h4>Why Robinette's numbers are flagged, not followed</h4>
+          <p>Rob Robinette's teardown is honest and useful — especially on seized fasteners — but its torque lists describe a tower with <i>“all four 14 mm nuts,” “three pointed bolts”</i> and separate inner/outer cap nuts. <b>A stock NA top hat has two studs/nuts per corner.</b> His values are shown for transparency and must not override the Miata.net factory ranges on an NA.</p>
+        </div>
+      </section>
+
+      <!-- ============ GOTCHAS ============ -->
+      <section id="gotchas">
+        <div class="sec-head"><span class="sec-num">09</span><h2>Gotchas — the eleven ways this job bites</h2></div>
+        <div class="gotchas">
+          <div class="gotcha">
+            <h4><span class="gnum">1</span>Seized end links — plan to replace them</h4>
+            <p>Small, exposed, 30 years old. Soak for days, hold the bolt head with a box wrench while turning the nut (a socket alone spins it), and expect at least one link to need cutting off. Have new links on the bench <i>before</i> the car goes up — a stranded, half-done car is the failure mode here.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">2</span>The lower shock bolt — the other seized one</h4>
+            <p>Robinette, rear: <i>“Mine were seized up pretty good. I had to squirt and soak them with Liquid Wrench to break them loose even with a 1/2 inch impact wrench @ 120 psi… On the right rear I had to use a big 1/2 inch breaker bar and tap it with a hammer a few times (I even stood on the wrench handle).”</i> Grease it on reassembly so the next person — you — can remove it.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">3</span>Captive nut spinning</h4>
+            <p>If a lower bolt turns forever without tightening or loosening, the square captive nut inside the wishbone has snapped its weld. MX5OC: <i>“Remove the wishbone and hold the nut with a spanner. It is not easy but it is doable… The nut is square not hexagon.”</i> One restoration thread describes the same failure destroying a control arm. <b>Prevention:</b> days of penetrating oil, steady hand pressure to break loose, work the bolt back-and-forth once it moves — don't just gun it with an impact.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">4</span>Shaft spins with the nut — counter-hold it right</h4>
+            <p>First defence: it was loosened in the car during prep. On the bench, counter-hold the <b>shaft tip itself</b> — the flats/hex/hex-socket at the very top of the rod — with a small wrench or hex key while turning the nut with a box wrench, crowfoot or pass-through socket. <b>Never</b> clamp the polished rod with Vise-Grips: scoring it means the new shock leaks. <b>Koni trap:</b> NA Koni Sports have <i>“no flats or other means of holding the shaft”</i> — decide your hold (strap/rubber protection above the seal sweep, or a shaft-hold tool) before the spring is compressed, and never use an impact to torque. A loose shaft nut in service isn't harmless either — one Grassroots thread traced ovalled top-mount holes and rattling to exactly that.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">5</span>Bump stops: inspect first — but never run without them</h4>
+            <p>Mostly Miata's 280,000-mile car: <i>“both [rears] had only remnants of bump stops remaining inside the dust boots.”</i> Bobshome's boots were <i>“very brittle and broken into many sections.”</i> The NA has little bump travel and rides its stops in hard use — running without them bottoms the shock and can damage the damper and top mount. The plan in this guide is inspect-and-reuse; if they're dust, the job pauses for replacements (OEM NA01-28-111 or the 5X Racing Street kit) rather than reassembling without stops. Gluing a crumbled stop to a new boot is a get-home measure, not a fix.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">6</span>Indexing: perch, hat, gasket</h4>
+            <p>Spring marked before removal, mark restored. Lower spring end <b>in the perch indentation</b> — an end sitting on the step raises that corner and can unseat. Rear springs: small end on the shock, large end on the cap; front and rear springs never swap ends of the car. Hat rotated until both studs drop through with the marked side facing the car's centre. And the <b>white gasket</b> goes back on top of the hat — tape it to the fender during removal.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">7</span>Rear access: trim, fuel filler, dropped nuts</h4>
+            <p>Metal guard off (fuel lines left, spare right); left side additionally needs the fuel filler + evap hoses moved to reach <i>and torque</i> the nuts. Trunk trim clips are brittle at 30 years — pull them with a trim tool, expect a clip or two to break. And the top-hat nuts: drop one into the body sheet metal and you're spending an hour with curved needle-nose pliers (Miata.net's author did). Magnetic socket, partner's hand, rag in the gap.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">8</span>Brittle plastic, everywhere</h4>
+            <p>Front dust caps over the top hats, the diagnostic-connector mount, trunk panels, undertray fasteners — all snap rather than flex now. Work them warm, by hand where possible, and budget replacement clips.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">9</span>Bush preload — the physics behind “torque loaded”</h4>
+            <p>The NA's rubber bushes are bonded to their sleeves, so whatever arm angle exists when you clamp the bolt becomes the bush's neutral angle. Good-Win Racing: locking bolts down at full droop <i>“can… eventually damage the bushings.”</i> This applies to <b>any pivot bolt you loosened</b>, not just the shock bolts.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">10</span>Alignment afterward — required, not optional</h4>
+            <p>Even though these methods avoid disturbing the eccentrics, you've changed ride height (new dampers, new bump stops, settled bushes) and had the hubs swinging free. Fat Cat lists <i>“a full four-wheel alignment… especially if you change dampers/springs”</i> as step 3 of any suspension refresh; RepairPal says the same. Let the car settle first — aligning a car still sitting high on twisted bushes gives a correct alignment at the wrong height.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">11</span>The small stuff that still stops you</h4>
+            <p>Front lower eye stuck in its mount — pry gently with a large flat screwdriver. Shock top scraping the fender on the way out — partner guides, tape the lip. ABS wire with nowhere to go on aftermarket shocks — cable tie, with a piece of old boot as a cushion (Bobshome's fix). Gas-pressure shocks extending themselves while you fit them — wire one compressed if needed. And <b>never use a torque wrench for loosening</b> — you'll ruin its calibration.</p>
+          </div>
+          <div class="gotcha">
+            <h4><span class="gnum">★</span>The 21 mm sockets</h4>
+            <p>Worth its own box: one poster lost a <b>2-hour round trip</b> mid-job just to buy 21 mm sockets for the long bolt. Front job only — but check you have them before the front wheels come off.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ SAFETY ============ -->
+      <section id="safety">
+        <div class="sec-head"><span class="sec-num">10</span><h2>Safety — read before the first spring comes off</h2></div>
+        <div class="callout danger">
+          <h4>⚠ The spring is a loaded weapon</h4>
+          <p>Robinette: <i>“The coil springs have a considerable amount of energy stored in them, do not under any circumstances remove the spring cap without first compressing the springs. If you don't use spring compressors the cap nut will fly off at high speed in one direction, the shock will go in the other direction and the tip of the shaft will strip as the nut flies off… stock springs need a compressor.”</i></p>
+          <p><b>Never</b> use the “explosive disassembly” shortcut that circulates in forum banter (foot on the mount, undo the nut, let it fly). Keith Tanner mentions it only to say: <i>“Never do this, of course.”</i></p>
+        </div>
+        <div class="cols-2">
+          <div>
+            <h3 style="margin-top:6px">Spring compressor drill</h3>
+            <ul>
+              <li><b>Inspect the tool first:</b> no bent rods, damaged threads, cracked hooks. Lubricate the threads. Reject a damaged tool — including your own.</li>
+              <li><b>Glasses and gloves on.</b> Keep the assembly's top and bottom <b>aimed away from both of you</b> for the entire operation. Never stand in line with the spring axis; never reach over a compressed spring.</li>
+              <li>Hooks <b>directly opposite</b>, fully seated, locking pins in.</li>
+              <li>Tighten <b>alternately, ~half a turn per side, hand wrench only</b> — The Drive: <i>“do not use an impact gun. You want to keep the force distribution between the two as equal as possible, and an impact gun will make this very hard to do.”</i></li>
+              <li>Compress <b>only until the top plate is loose</b> / the spring rotates.</li>
+              <li><b>Stop immediately</b> on creaking, slipping or bowing. If a hook walks, release tension evenly and reseat — never try to catch or reseat a loaded spring by hand.</li>
+              <li>Release the same way: slowly, evenly, alternating. <b>Never leave a compressed spring unattended</b> on the bench — finish the corner or release it.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 style="margin-top:6px">Lifting &amp; support on an NA</h3>
+            <ul>
+              <li><b>Stands, never a jack alone.</b> Raise a whole end under the <b>front crossmember</b> or the <b>rear differential</b> (Lanny Chambers' method) with a wood pad under the saddle; stands go at the <b>reinforced sill (pinch-weld) jacking points</b> — just behind the front wheels, just ahead of the rears.</li>
+              <li>Use a <b>grooved pad, slotted puck or grooved 2×4</b> over the seam so it isn't crushed: <i>“Cut a groove down the length of a piece of 2x4… deep enough to straddle the lip along the bottom of the rocker panel.”</i></li>
+              <li><b>Rusty or crushed sill? Do not support the car there.</b> Use the subframe/frame-rail alternative and treat the rust as a structural problem, not a jacking inconvenience.</li>
+              <li>Jack slowly, centre the load, set both stands, lower onto them, then <b>shake the car firmly</b> before any wheel comes off or anyone goes under. Chocks in, brake on.</li>
+              <li><b>Low car:</b> check the jack fits before you need it; driving onto wood blocks first is the standard fix.</li>
+              <li>When loading a corner for torque, the jack under the hub is <b>in addition to</b> a stand positioned to catch the car — raise only until the stand just unloads, torque, lower back on.</li>
+              <li>No part of either person under the car while it's being raised or lowered — and the second person stays clear of the long-bolt breaker-bar arc.</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============ VARIANTS ============ -->
+      <section id="variants">
+        <div class="sec-head"><span class="sec-num">11</span><h2>Year &amp; variant notes — what actually changes</h2></div>
+        <ul>
+          <li><b>1990–93 (1.6, NA6) vs 1994–97 (1.8, NA8): the procedure, fasteners and torque values in this guide are the same.</b> 1994 brought the 1.8, dual airbags, a Torsen option and substantial extra chassis bracing (including the seat-belt-tower “track bar”) — rear brace hardware can crowd rear lower-arm work on some cars, but it changes neither the procedure nor any torque value.</li>
+          <li><b>Ride height differs by year</b> — don't judge your result against the wrong year. Mazda Motorsports' Spec Miata baselines set different pinch-weld heights for '89–'93 1.6, '94–'95 1.8 and '96–'97 1.8 cars; 1996–97 cars sit notably tall stock.</li>
+          <li><b>R-Package / 1993 LE:</b> factory Bilsteins, stiffer springs and bars — same procedure, and <b>no power steering</b>, which makes the long bolt easier (no pipework in the way).</li>
+          <li><b>Power steering:</b> pipework passes the driver's-side long bolt — slide it, protect the pipes, never lever against them.</li>
+          <li><b>ABS:</b> front wire clipped/bracketed to the shock plus a sensor and bracket on the upper A-arm (12 mm). Many replacement shocks have no welded clip — cable-tie fix is accepted practice. Rear work unaffected. Non-ABS cars skip all of it.</li>
+          <li><b>NA vs NB parts mixing — a common “upgrade” trap:</b> a <i>complete</i> NB assembly can go into an NA, but you can't freely mix NA springs (closed coil both ends), NB springs (open coil one end), NA perches and NB top hats — the hat moves the spring's mounting plane and changes ride height. Tanner: <i>“You can put a complete NB assembly in an NA but not vice versa.”</i> And an NB assembly won't fit in or out by the ball-joint method — long bolt only.</li>
+          <li><b>Front vs rear, in one line:</b> front = top nuts from the engine bay, long bolt, both end links off, ABS/brake care, lower bolt in from the rear. Rear = top nuts from the trunk, fuel-filler obstruction on the left only, hub swung down, no steering parts.</li>
+        </ul>
+        <div class="callout">
+          <h4>Open questions — not verified, don't guess</h4>
+          <p><b>Exact shaft-nut size/torque for your specific replacement brand</b> (Koni, Bilstein, KYB…) varies by maker and wasn't verified per-brand — the shock in the box and its instruction sheet govern that one nut. <b>No current Flyin' Miata or Moss written (PDF) NA install sheet with its own torque table</b> could be verified — FM's current NA guidance is the video below plus kit-specific sheets; every torque value on this page is Miata.net/FSM, mazda-miata.nl, Buckeye, NASA or Robinette, labelled as such. The <b>ABS bolt torque (12–16 ft-lb)</b> rests on Robinette alone.</p>
+        </div>
+      </section>
+
+      <!-- ============ WATCH & READ ============ -->
+      <section id="watch">
+        <div class="sec-head"><span class="sec-num">12</span><h2>Watch before you start, keep open during the job</h2></div>
+        <div class="videos">
+          <a class="video" href="https://www.youtube.com/watch?v=KZYdYAKajuc">
+            <div class="ch">Watch first · Cars Onboard</div>
+            <h4>How to Install Shocks &amp; Springs — NA Mazda Miata</h4>
+            <p>Short and clear stock-style replacement (Tein S-Tech springs + OEM-replacement shocks). Watch this one first for the shape of the job, then the Flyin' Miata video for detail.</p>
+            <div class="meta">14 min · 103K views</div>
+          </a>
+          <a class="video" href="https://www.youtube.com/watch?v=NYoE-jSzPjA">
+            <div class="ch">The authoritative one · Flyin' Miata</div>
+            <h4>Need Help Installing Your Koni Suspension? NA Miata, step by step</h4>
+            <p>FM master mechanic Kyle Tigar installs Koni Special Active shocks on a 1995 NA — the exact stock-type, spring-compressor job on this page, from the people who wrote the long-bolt lore.</p>
+            <div class="meta">34 min</div>
+          </a>
+          <a class="video" href="https://www.youtube.com/watch?v=i3HX5jP585Y">
+            <div class="ch">Closest to your garage · The Sundae Drive</div>
+            <h4>NA Miata MX-5 Suspension Ultimate Install Guide — 1990–97</h4>
+            <p>Home-garage pace on a 1990 NA with 30-year-old stock suspension — closest to what a first-timer will actually see, grime included.</p>
+            <div class="meta">26 min</div>
+          </a>
+          <a class="video" href="https://www.youtube.com/watch?v=Mi6UkCE-xGo">
+            <div class="ch">Best refit footage · Boosted Media</div>
+            <h4>How To Install MX5/Miata Coilovers — The Complete Guide</h4>
+            <p>Coilovers rather than stock springs, but the most detail-obsessed removal/refit footage going — best visual reference for arm droop, extraction angles and refitting.</p>
+            <div class="meta">25 min · 126K views</div>
+          </a>
+        </div>
+        <p style="margin-top:14px">Also worth a look: <b>Andrew Does Car Stuff — FM Koni Stage 2.5 Install, Part 1: Front (21 min) and Part 2: Rear (15 min)</b> on a 1991 NA6 — unusually good because it splits front and rear exactly as this guide does. (Found via YouTube search; watch page not individually verified, so no direct link.)</p>
+
+        <h3>Written guides</h3>
+        <ol>
+          <li><b><a href="http://miata.net/garage/shocks.html">Miata.net Garage — Shock Absorber and Spring Replacement</a></b> (Bob Cohen). The canonical guide: factory torque list, rear + front steps, the Andy Hollis long-bolt alternate method (credit: Mazda Master Tech John Long), Pete Hodge's solo-worker tips, honest first-timer times. Start here.</li>
+          <li><b><a href="http://www.bobshome.net/cars/miata_mods/shocks/">Bobshome — Miata Shocks and Sways Installation</a></b>. Best photo-by-photo companion: hub-carrier front method, the loaded-torque step photographed, tool list, and the 7-hour first-timer reality check.</li>
+          <li><b><a href="https://nasaspeed.news/tech/suspension/installing-penske-shocks-on-a-spec-miata/">NASA Speed News — Installing Penske Shocks on a Spec Miata</a></b>. Cleanest statement of the modern long-bolt workflow (slide, don't fully remove) and the left-rear fuel-filler step — read alongside the torque disagreement flags above.</li>
+          <li><b><a href="http://mazda-miata.nl/index.php/en/garage-eng/shock-front-eng">mazda-miata.nl — Front Shock Absorber Replacement</a></b>. Concise long-bolt walkthrough in Nm, with the two warnings nobody else states as plainly: soak everything 1–2 days ahead, and watch the power-steering pipework.</li>
+          <li><b><a href="https://grassrootsmotorsports.com/forum/grm/i-guess-i-shouldve-listened-to-keiths-advice/47443/page1/">Grassroots Motorsports — “I guess I should've listened to Keith's advice”</a></b>. The thread that settles the method argument, plus the 21 mm socket cautionary tale. For failure modes, pair with the <a href="https://forum.mx5oc.co.uk/t/help-needed-please-lower-suspension-bolt-strange-problem/57881">MX5OC captive-nut thread</a>.</li>
+        </ol>
+      </section>
+
+      <footer>
+        <h4>Sources</h4>
+        <p>Researched and verified 2026-10-21. Torque values are the Mazda Shop Manual ranges as published by Miata.net Garage, corroborated by mazda-miata.nl (Nm) and the Buckeye Miata Club torque sheet; disagreements with NASA Speed News/Penske and Robinette are flagged in the table rather than resolved silently.</p>
+        <ol>
+          <li>Miata.net Garage, Cohen — <a href="http://miata.net/garage/shocks.html">miata.net/garage/shocks.html</a></li>
+          <li>Bobshome, Shocks and Sways — <a href="http://www.bobshome.net/cars/miata_mods/shocks/">bobshome.net/cars/miata_mods/shocks</a></li>
+          <li>NASA Speed News, Penske Spec Miata — <a href="https://nasaspeed.news/tech/suspension/installing-penske-shocks-on-a-spec-miata/">nasaspeed.news</a></li>
+          <li>mazda-miata.nl, Front shock replacement — <a href="http://mazda-miata.nl/index.php/en/garage-eng/shock-front-eng">mazda-miata.nl</a></li>
+          <li>Robinette, Shocks &amp; Springs Install — <a href="https://rx7.org/Robinette/shocks.htm">rx7.org/Robinette/shocks.htm</a> (torques flagged)</li>
+          <li>Buckeye Miata Club, Torque Wrench Specs — <a href="https://www.buckeyemiataclub.com/uploads/2/5/9/1/25910389/torque_wrench_specs_-_miata.pdf">buckeyemiataclub.com (PDF)</a></li>
+          <li>Grassroots Motorsports — Keith Tanner threads: <a href="https://grassrootsmotorsports.com/forum/grm/i-guess-i-shouldve-listened-to-keiths-advice/47443/page1/">long bolt</a> · <a href="https://grassrootsmotorsports.com/forum/grm/nb-springs-into-an-na/123442/page1/">NB springs into an NA</a> · <a href="https://grassrootsmotorsports.com/forum/grm/miata-ride-height-issue/96638/page1/">loose shock nut</a></li>
+          <li>Mostly Miata, Shock Replacement — <a href="https://www.mostlymiata.net/rallycross-miata-project/r-rallycross-miata-shock-replacement">mostlymiata.net</a></li>
+          <li>Fat Cat Motorsports, Suspension FAQ — <a href="https://www.fatcatmotorsports.com/FAQ2.htm">fatcatmotorsports.com</a> · 5X Racing bump stop kits — <a href="https://5xracing.com/i-20921909-5x-racing-sport-bump-stop-kits-for-1990-1997-miata.html?ref=category:1231774">5xracing.com</a></li>
+          <li>The Drive, How To Use a Spring Compressor — <a href="https://www.thedrive.com/guides-and-gear/how-to-use-a-spring-compressor">thedrive.com</a> · EngineerFix, compressor rental safety — <a href="https://engineerfix.com/how-to-safely-rent-a-spring-compressor/">engineerfix.com</a></li>
+          <li>MX5OC — <a href="https://forum.mx5oc.co.uk/t/axle-stand-placement-and-jacking-points/138806">jacking points</a> · <a href="https://forum.mx5oc.co.uk/t/help-needed-please-lower-suspension-bolt-strange-problem/57881">captive nut</a> · Lanny Chambers jacking method — <a href="https://www.motorsforum.com/mazda-miata/using-a-jack-19444-.htm">motorsforum.com</a></li>
+          <li>Moneypit Garage, Koni shaft-hold problem — <a href="https://www.moneypit-garage.com/2018/07/28-progress-on-miata-seats-and-suspension/">moneypit-garage.com</a> · Good-Win Racing via MazdaTalk, twisted bushings — <a href="https://www.mazdatalkforum.com/viewtopic.php?t=4381">mazdatalkforum.com</a></li>
+          <li>RepairPal, Miata shock replacement &amp; alignment — <a href="https://repairpal.com/estimator/mazda/miata/1990/suspension-shock-or-strut-replacement-cost">repairpal.com</a> · Mazda Motorsports, Spec Miata baseline — <a href="https://www.mazdamotorsports.com/2020/04/07/baseline-setup-for-spec-miata/">mazdamotorsports.com</a> · revlimiter, trunk fuel filler — <a href="https://revlimiter.net/blog/2012/07/how-to-eliminate-miata-gas-fumes-i-hope/">revlimiter.net</a></li>
+        </ol>
+        <p style="margin-top:14px">A general guide for any 1990–97 NA Miata / MX-5 on stock-style springs and shocks. Print it, prop it on the workbench, and grease the lower bolts for the next crew.</p>
+      </footer>
+
+    </div>
+
+    <!-- TIP JAR — canonical snippet (Dave's standard, 2026-10-24): breathing pulse,
+         jar hop + coin glint every ~9s, hover spin + label shimmer, off under
+         prefers-reduced-motion. Points at Dave's Ko-fi page. -->
+    <style>
+      .tipjar{position:fixed;right:18px;bottom:18px;z-index:60;
+        font-family:inherit;-webkit-tap-highlight-color:transparent}
+      .tipjar a{display:inline-flex;align-items:center;gap:.5em;
+        padding:.55em 1em;border-radius:999px;text-decoration:none;
+        font-size:.9rem;font-weight:600;line-height:1;
+        color:#fff;background:linear-gradient(135deg,#7c4dff,#b388ff);
+        box-shadow:0 6px 18px rgba(124,77,255,.35),0 2px 6px rgba(0,0,0,.25);
+        animation:tipjar-breathe 6s ease-in-out infinite}
+      .tipjar .jar{display:inline-block;font-size:1.15em;position:relative;
+        animation:tipjar-hop 9s ease-in-out infinite}
+      .tipjar .coin{position:absolute;left:50%;top:-.9em;transform:translateX(-50%);
+        font-size:.8em;opacity:0;animation:tipjar-coin 9s ease-in-out infinite}
+      .tipjar a:hover .jar{animation:tipjar-spin .7s cubic-bezier(.34,1.56,.64,1)}
+      .tipjar a:hover .tiptext{animation:tipjar-shimmer 2.5s linear infinite}
+      .tipjar a:focus-visible{outline:3px solid #ffd54f;outline-offset:3px}
+      @keyframes tipjar-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
+      @keyframes tipjar-hop{0%,88%,100%{transform:translateY(0)}92%{transform:translateY(-4px) rotate(-8deg)}96%{transform:translateY(0)}}
+      @keyframes tipjar-coin{0%,88%,100%{opacity:0;transform:translate(-50%,0)}92%{opacity:1;transform:translate(-50%,4px)}96%,98%{opacity:0;transform:translate(-50%,9px)}}
+      @keyframes tipjar-spin{to{transform:rotate(360deg)}}
+      @keyframes tipjar-shimmer{0%{filter:brightness(1)}50%{filter:brightness(1.45)}100%{filter:brightness(1)}}
+      @media (prefers-reduced-motion: reduce){
+        .tipjar a,.tipjar .jar,.tipjar .coin{animation:none}
+      }
+    </style>
+    <div class="tipjar">
+      <a href="https://ko-fi.com/davedellaquila" target="_blank" rel="noopener"
+         aria-label="Tip jar — if this page helped you, you can leave Dave a tip on Ko-fi">
+        <span class="jar">🫙<span class="coin">🪙</span></span><span class="tiptext">Tip Jar</span>
+      </a>
+    </div>
+  </body>
+</html>
